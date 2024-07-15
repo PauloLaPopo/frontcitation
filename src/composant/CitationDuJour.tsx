@@ -62,11 +62,13 @@ const CitationDuJour: React.FC = () => {
     return (
         isPartieEnCours ? (
             <div>
-                <Link to="/" className="back-link">
-                    <span className="arrow-left">&#x2190;</span> {/* Flèche vers la gauche */}
-                    <span className="back-text">Retour</span>
-                </Link>
-                <h1>Devine l'auteur</h1>
+                <div className="header_page">
+                    <Link to="/" className="back-link">
+                        <span className="arrow-left">&#x2190;</span> {/* Flèche vers la gauche */}
+                        <span className="back-text">Retour</span>
+                    </Link>
+                    <h1 className="title">Devine l'auteur</h1>
+                </div>
                 {citation ? (
                     <div>
                     <Qcm
