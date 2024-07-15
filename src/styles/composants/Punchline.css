@@ -1,0 +1,64 @@
+.Punchline {
+    text-align: center;
+    padding: 20px;
+}
+
+.Punchline .nav-button {
+    margin-bottom: 10px;
+}
+
+.clue-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.clue-button:hover {
+    background-color: #555;
+}
+
+.game-over {
+    margin-top: 20px;
+}
+
+.game-over p {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.game-over button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.game-over button:hover {
+    background-color: #555;
+}
+
+.back-link {
+    top: 20px;
+    left: 20px;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #333;
+}
+
+.arrow-left {
+    font-size: 20px;
+    margin-right: 5px;
+}
+
+.back-text {
+    font-size: 16px;
+}

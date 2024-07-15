@@ -1,0 +1,18 @@
+.option-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: transparent;
+    border: 2px solid #333;
+    color: #333;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.option-button:hover {
+    background-color: #333;
+    color: #fff;
+}
+
+.option-button:active {
+    transform: translateY(2px);
+}

@@ -1,0 +1,30 @@
+.HomePage {
+    text-align: center;
+    padding: 20px;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px; /* Espacement entre les boutons */
+    margin-top: 20px;
+}
+
+.nav-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: transparent;
+    border: 2px solid #333;
+    color: #333;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.nav-button:hover {
+    background-color: #333;
+    color: #fff;
+}
+
+.nav-button:active {
+    transform: translateY(2px);
+}

@@ -1,0 +1,24 @@
+.modifier-citation {
+    padding: 20px;
+}
+
+.modifier-citation form {
+    display: flex;
+    flex-direction: column;
+}
+
+.modifier-citation form div {
+    margin-bottom: 10px;
+}
+
+.modifier-citation form label {
+    margin-bottom: 5px;
+}
+
+.modifier-citation form input {
+    padding: 5px;
+}
+
+.modifier-citation form button {
+    align-self: flex-start;
+}

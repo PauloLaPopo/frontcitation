@@ -1,0 +1,17 @@
+.citation-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+}
+
+.citation-item p {
+    flex: 1;
+    margin: 0;
+}
+
+.citation-item .edit-button,
+.citation-item .delete-button {
+    margin-left: 10px;
+}

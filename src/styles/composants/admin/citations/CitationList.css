@@ -1,0 +1,12 @@
+.citation-list {
+    padding: 20px;
+}
+
+.citation-list h1 {
+    text-align: center;
+}
+
+.citation-list button {
+    display: block;
+    margin: 20px auto;
+}
