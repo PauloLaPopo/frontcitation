@@ -13,6 +13,8 @@ import AdminPage from "./composant/admin/AdminPage";
 import CitationList from "./composant/admin/citations/CitationList";
 import ModifierCitation from "./composant/admin/citations/ModifierCitation";
 import SupprimerCitation from "./composant/admin/citations/SupprimerCitation";
+import Register from "./composant/authentification/Register";
+import Login from "./composant/authentification/Login";
 
 const App: React.FC = () => {
     return (
@@ -21,7 +23,9 @@ const App: React.FC = () => {
                 <Header/>
                 <div className="content">
                     <Routes>
-                        <Route path="/" element={<HomePage/>}/>
+                        {/*<Route path="/" element={<HomePage/>}/>*/}
+                        <Route path="/register" element= { <Register/>} />
+                        <Route path="/" element= { <Login/>} />
                         <Route path="/citation-du-jour" element={<CitationDuJour/>}/>
                         <Route path="/ajouter-citation" element={<AddCitationPage/>}/>
                         <Route path="/punchline" element={<Punchlines/>}/>
