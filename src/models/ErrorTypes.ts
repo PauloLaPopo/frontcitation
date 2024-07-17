@@ -1,0 +1,6 @@
+enum ErrorTypes {
+    EMAIL_ALREADY_EXISTS = 'EMAIL_ALREADY_EXISTS',
+    USER_NAME_ALREADY_EXISTS = 'USER_NAME_ALREADY_EXISTS',
+}
+
+export default ErrorTypes;

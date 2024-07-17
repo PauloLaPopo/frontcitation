@@ -9,7 +9,7 @@ const AdminPage: React.FC = () => {
           <Link to="/ajouter-citation">
               <button className="nav-button">Ajouter Citation</button>
           </Link>
-          <Link to="/citations">
+          <Link to="/list-citations">
               <button className="nav-button">Modifier Citations</button>
           </Link>
       </div>

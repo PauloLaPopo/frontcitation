@@ -7,7 +7,7 @@ const HomePage: React.FC = () => {
         <div className="HomePage">
             <h1>Bienvenue</h1>
             <div className="button-container">
-                <Link to="/citation-du-jour">
+                <Link to="/citations">
                     <button className="nav-button">Citation</button>
                 </Link>
                 <Link to="/punchline">

@@ -10,7 +10,7 @@ const Login: React.FC = () => {
     const login = async (event: React.FormEvent) => {
         event.preventDefault();
         try {
-            const res = await axios.post("http://localhost:8080/api/v1/user/login", {
+            const res = await axios.post("http://localhost:8080/api/user/login", {
                 email: email,
                 password: password,
             });
@@ -65,6 +65,9 @@ const Login: React.FC = () => {
                             </div>
                             <button type="submit" className="btn btn-primary">
                                 Login
+                            </button>
+                            <button onClick={() => navigate('/register')}>
+                                Register ?
                             </button>
                         </form>
                     </div>

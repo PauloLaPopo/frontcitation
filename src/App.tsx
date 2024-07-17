@@ -23,14 +23,14 @@ const App: React.FC = () => {
                 <Header/>
                 <div className="content">
                     <Routes>
-                        {/*<Route path="/" element={<HomePage/>}/>*/}
-                        <Route path="/register" element= { <Register/>} />
                         <Route path="/" element= { <Login/>} />
-                        <Route path="/citation-du-jour" element={<CitationDuJour/>}/>
+                        <Route path="/register" element= { <Register/>} />
+                        <Route path="/home" element={<HomePage/>}/>
+                        <Route path="/citations" element={<CitationDuJour/>}/>
                         <Route path="/ajouter-citation" element={<AddCitationPage/>}/>
                         <Route path="/punchline" element={<Punchlines/>}/>
                         <Route path="/admin" element={<AdminPage/>}/>
-                        <Route path="/citations" element={<CitationList/>}/>
+                        <Route path="/list-citations" element={<CitationList/>}/>
                         <Route path="/modifier-citation/:id" element={<ModifierCitation/>}/>
                         <Route path="/supprimer-citation/:id" element={<SupprimerCitation/>}/>
                     </Routes>

@@ -63,7 +63,7 @@ const CitationDuJour: React.FC = () => {
         isPartieEnCours ? (
             <div>
                 <div className="header_page">
-                    <Link to="/" className="back-link">
+                    <Link to="/home" className="back-link">
                         <span className="arrow-left">&#x2190;</span> {/* Flèche vers la gauche */}
                         <span className="back-text">Retour</span>
                     </Link>
