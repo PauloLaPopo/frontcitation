@@ -1,0 +1,66 @@
+.register-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+    background: #f4f4f4; /* Fond légèrement gris pour la page */
+    padding: 2rem; /* Ajout de l'espace autour du formulaire */
+}
+
+.register-form {
+    background: white;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #333;
+    font-weight: bold;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.form-buttons {
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+.form-buttons button {
+    border-radius: 4px;
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: transparent;
+    border: 2px solid #333;
+    color: #333;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin: 0 0.5rem; /* Espacement entre les boutons si vous en avez plusieurs */
+}
+
+.form-buttons button[type="submit"] {
+    background: #333;
+    color: white;
+    border: 2px solid #333;
+}
+
+.form-buttons button[type="submit"]:hover {
+    background-color: white;
+    color: #333;
+    border: 2px solid #333;
+}

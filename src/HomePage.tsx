@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './styles/composants/HomePage.css'
+import Button from "./composant/utils/Button";
 
 const HomePage: React.FC = () => {
     return (
@@ -8,10 +9,10 @@ const HomePage: React.FC = () => {
             <h1>Bienvenue</h1>
             <div className="button-container">
                 <Link to="/citations">
-                    <button className="nav-button">Citation</button>
+                    <Button title={"Citation"} />
                 </Link>
                 <Link to="/punchline">
-                    <button className="nav-button">Punchline</button>
+                    <Button title={"Punchline"}/>
                 </Link>
             </div>
         </div>

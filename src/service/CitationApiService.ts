@@ -3,11 +3,18 @@ import { Citation } from '../models/Citation'; // Assurez-vous d'importer correc
 
 const API_URL = 'http://localhost:8080/api/citations'; // Remplacez par l'URL de votre API
 
-const citationApiService = {
+const getAuthToken = () => {
+    return localStorage.getItem('token');
+};
 
+const citationApiService = {
     async getCitation(): Promise<Citation | null> {
         try {
-            const response = await axios.get<Citation>(`${API_URL}/dujour`);
+            const response = await axios.get<Citation>(`${API_URL}/dujour`, {
+                headers: {
+                    'Authorization': `Bearer ${getAuthToken()}`
+                }
+            });
             return response.data;
         } catch (error) {
             console.error('Erreur lors de la récupération de la citation du jour:', error);
@@ -17,7 +24,11 @@ const citationApiService = {
 
     async getCitationById(id: string): Promise<Citation | null> {
         try {
-            const response = await axios.get<Citation>(`${API_URL}/${id}`);
+            const response = await axios.get<Citation>(`${API_URL}/${id}`, {
+                headers: {
+                    'Authorization': `Bearer ${getAuthToken()}`
+                }
+            });
             return response.data;
         } catch (error) {
             console.error('Erreur lors de la récupération de la citation :', error);
@@ -27,7 +38,11 @@ const citationApiService = {
 
     async updateCitation(citation: Citation): Promise<void> {
         try {
-            await axios.put(`${API_URL}/${citation.id}`, citation);
+            await axios.put(`${API_URL}/${citation.id}`, citation, {
+                headers: {
+                    'Authorization': `Bearer ${getAuthToken()}`
+                }
+            });
         } catch (error) {
             console.error('Erreur lors de la modification de la citation :', error);
         }
@@ -35,7 +50,11 @@ const citationApiService = {
 
     async deleteCitation(id: string): Promise<void> {
         try {
-            await axios.delete(`${API_URL}/delete/${id}`);
+            await axios.delete(`${API_URL}/delete/${id}`, {
+                headers: {
+                    'Authorization': `Bearer ${getAuthToken()}`
+                }
+            });
         } catch (error) {
             console.error('Erreur lors de la suppression de la citation', error);
         }
@@ -43,7 +62,11 @@ const citationApiService = {
 
     async getDifferentCitation(currentCitation: Citation): Promise<Citation | null> {
         try {
-            const response = await axios.post<Citation>(`${API_URL}/different`, currentCitation);
+            const response = await axios.post<Citation>(`${API_URL}/different`, currentCitation, {
+                headers: {
+                    'Authorization': `Bearer ${getAuthToken()}`
+                }
+            });
             return response.data;
         } catch (error) {
             console.error('Erreur lors de la récupération d\'une citation différente:', error);
@@ -55,6 +78,7 @@ const citationApiService = {
         try {
             const response = await axios.post<string[]>(`${API_URL}/different-authors`, { author }, {
                 headers: {
+                    'Authorization': `Bearer ${getAuthToken()}`,
                     'Content-Type': 'application/json'
                 }
             });
@@ -67,7 +91,11 @@ const citationApiService = {
 
     async getAllCitations(): Promise<Citation[]> {
         try {
-            const response = await axios.get<Citation[]>(`${API_URL}/all`);
+            const response = await axios.get<Citation[]>(`${API_URL}/all`, {
+                headers: {
+                    'Authorization': `Bearer ${getAuthToken()}`
+                }
+            });
             return response.data;
         } catch (error) {
             console.error('Erreur lors de la récupération de toutes les citations:', error);
@@ -77,7 +105,11 @@ const citationApiService = {
 
     async addCitation(newCitation: Citation): Promise<Citation | null> {
         try {
-            const response = await axios.post<Citation>(`${API_URL}/add`, newCitation);
+            const response = await axios.post<Citation>(`${API_URL}/add`, newCitation, {
+                headers: {
+                    'Authorization': `Bearer ${getAuthToken()}`
+                }
+            });
             return response.data;
         } catch (error) {
             console.error('Erreur lors de l\'ajout de la citation:', error);

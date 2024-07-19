@@ -1,6 +1,6 @@
 import React from 'react';
-import ButtonOption from './ButtonOption';
 import '../styles/composants/Qcm.css'
+import Button from "./utils/Button";
 
 interface QcmProps {
     texte: string;
@@ -20,10 +20,10 @@ const Qcm: React.FC<QcmProps> = ({ texte, auteur, options, fetchDifferentCitatio
             <p>{texte}</p>
             <div id="boutons-auteurs">
                 {options.map((author, index) => (
-                    <ButtonOption
+                    <Button
                         key={index}
-                        author={author}
-                        handleClick={() => fetchDifferentCitation(author === auteur)}
+                        title={author}
+                        onClick={() => fetchDifferentCitation(author === auteur)}
                     />
                 ))}
             </div>

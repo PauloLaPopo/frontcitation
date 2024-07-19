@@ -1,7 +1,5 @@
-// App.tsx
-
 import React from 'react';
-import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
+import {BrowserRouter as Router, Navigate, Route, Routes} from 'react-router-dom';
 import './App.css';
 import HomePage from './HomePage';
 import CitationDuJour from './composant/CitationDuJour';
@@ -13,31 +11,37 @@ import AdminPage from "./composant/admin/AdminPage";
 import CitationList from "./composant/admin/citations/CitationList";
 import ModifierCitation from "./composant/admin/citations/ModifierCitation";
 import SupprimerCitation from "./composant/admin/citations/SupprimerCitation";
-import Register from "./composant/authentification/Register";
-import Login from "./composant/authentification/Login";
+import Register from "./composant/authentification/RegisterPage";
+import Login from "./composant/authentification/LoginPage";
+import PrivateRoute from "./composant/PrivateRoute";
+import {AuthProvider} from "./context/AuthContext";
 
 const App: React.FC = () => {
     return (
-        <Router>
-            <div className="App">
-                <Header/>
-                <div className="content">
-                    <Routes>
-                        <Route path="/" element= { <Login/>} />
-                        <Route path="/register" element= { <Register/>} />
-                        <Route path="/home" element={<HomePage/>}/>
-                        <Route path="/citations" element={<CitationDuJour/>}/>
-                        <Route path="/ajouter-citation" element={<AddCitationPage/>}/>
-                        <Route path="/punchline" element={<Punchlines/>}/>
-                        <Route path="/admin" element={<AdminPage/>}/>
-                        <Route path="/list-citations" element={<CitationList/>}/>
-                        <Route path="/modifier-citation/:id" element={<ModifierCitation/>}/>
-                        <Route path="/supprimer-citation/:id" element={<SupprimerCitation/>}/>
-                    </Routes>
+        <AuthProvider>
+            <Router>
+                <div className="App">
+                    <Header/>
+                    <div className="content">
+                        <Routes>
+                            <Route path="*" element={<Navigate to={"/login"}/>}/>
+                            <Route path="/login" element={<Login/>}/>
+                            <Route path="/register" element={<Register/>}/>
+                            <Route path="/home" element={<PrivateRoute> <HomePage/> </PrivateRoute>}/>
+                            <Route path="/citations" element={<PrivateRoute> <CitationDuJour/> </PrivateRoute>}/>
+                            <Route path="/punchline" element={<PrivateRoute> <Punchlines/> </PrivateRoute>}/>
+
+                            <Route path="/admin" element={<AdminPage/>}/>
+                            <Route path="/ajouter-citation" element={<AddCitationPage/>}/>
+                            <Route path="/list-citations" element={<CitationList/>}/>
+                            <Route path="/modifier-citation/:id" element={<ModifierCitation/>}/>
+                            <Route path="/supprimer-citation/:id" element={<SupprimerCitation/>}/>
+                        </Routes>
+                    </div>
+                    <Footer/>
                 </div>
-                <Footer/>
-            </div>
-        </Router>
+            </Router>
+        </AuthProvider>
     );
 };
 

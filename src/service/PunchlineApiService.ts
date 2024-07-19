@@ -5,11 +5,19 @@ import {shuffle} from "../utils/Shuffle";
 
 const API_URL = 'http://localhost:8080/api/punchlines'; // Remplacez par l'URL de votre API
 
+const getAuthToken = () => {
+    return localStorage.getItem('token');
+};
+
 const punchlineApiService = {
 
     async getAllPunchlines(): Promise<Punchline[]> {
         try {
-            const response = await axios.get<Punchline[]>(`${API_URL}/all`);
+            const response = await axios.get<Punchline[]>(`${API_URL}/all`, {
+                    headers: {
+                        'Authorization': `Bearer ${getAuthToken()}`
+                    }
+                });
             return response.data;
         } catch (error) {
             console.error('Erreur lors de la récupération de toutes les citations:', error);
@@ -21,7 +29,8 @@ const punchlineApiService = {
         try {
             const response = await axios.post<string[]>(`${API_URL}/different-authors`, { author }, {
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${getAuthToken()}`
                 }
             });
             return response.data;
@@ -33,7 +42,11 @@ const punchlineApiService = {
 
     async getAllAuthors(): Promise<string[]> {
         try {
-            const response = await axios.get<string[]>(`${API_URL}/authors`);
+            const response = await axios.get<string[]>(`${API_URL}/authors`, {
+                headers: {
+                    'Authorization': `Bearer ${getAuthToken()}`
+                }
+            });
             return response.data;
         } catch (error) {
             console.error('Erreur lors de la récupération de tous les auteurs:', error);

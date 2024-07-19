@@ -1,0 +1,33 @@
+.button {
+    border-radius: 4px;
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: transparent;
+    border: 2px solid #333;
+    color: #333;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin: 0 0.5rem; /* Espacement entre les boutons si vous en avez plusieurs */
+}
+
+.primary {
+    background: #333;
+    color: white;
+}
+
+.primary:hover {
+    background-color: white;
+    color: #333;
+    border: 2px solid #333;
+}
+
+.secondary {
+    background-color: white;
+    color: #333;
+    border: 2px solid #333;
+}
+
+.secondary:hover {
+    background-color: #333;
+    color: white;
+}
