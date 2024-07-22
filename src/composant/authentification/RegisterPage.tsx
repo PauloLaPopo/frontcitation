@@ -2,6 +2,7 @@ import React, {useState} from "react";
 import {useNavigate} from "react-router-dom";
 import { useAuth } from '../../context/AuthContext';
 import '../../styles/composants/authentification/RegisterPage.css'
+import RoutesTypes from "../../models/RoutesTypes";
 
 const RegisterPage: React.FC = () => {
     const [userName, setUserName] = useState('');
@@ -14,7 +15,7 @@ const RegisterPage: React.FC = () => {
         event.preventDefault();
         try {
             await register(userName, email, password);
-            navigate('/home');
+            navigate(RoutesTypes.HOME);
         } catch (error) {
             console.error('Registration failed:', error);
         }
@@ -51,7 +52,7 @@ const RegisterPage: React.FC = () => {
                     />
                 </div>
                 <div className="form-buttons">
-                    <button onClick={() => navigate('/login')}>Retour</button>
+                    <button onClick={() => navigate(RoutesTypes.LOGIN)}>Retour</button>
                     <button type="submit">Register</button>
                 </div>
             </form>

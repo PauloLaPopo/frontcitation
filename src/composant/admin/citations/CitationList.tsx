@@ -1,7 +1,9 @@
-import React, { useState, useEffect, useRef, useCallback } from 'react';
+import React, {useState, useEffect, useRef, useCallback} from 'react';
 import citationApiService from '../../../service/CitationApiService';
-import { Citation } from '../../../models/Citation';
+import {Citation} from '../../../models/Citation';
 import Loader from "../../utils/Loader";
+import CitationItem from "./CitationItem";
+import HeaderPage from "../../utils/HeaderPage";
 
 const CitationList: React.FC = () => {
     const [citations, setCitations] = useState<Citation[]>([]);
@@ -14,7 +16,6 @@ const CitationList: React.FC = () => {
         const fetchCitations = async () => {
             setLoading(true);
             const allCitations = await citationApiService.getAllCitations();
-            console.log(allCitations);
             setCitations(allCitations);
             setDisplayedCitations(allCitations.slice(0, 10)); // Affiche les 10 premières citations
             setLoading(false);
@@ -45,24 +46,24 @@ const CitationList: React.FC = () => {
         if (node) observer.current.observe(node);
     }, [loading, hasMore]);
 
+    const handleDeleteCitation = (id: string) => {
+        setCitations(prevCitations => prevCitations.filter(citation => citation.id !== id));
+    };
+
     return (
         <div>
-            <h1>Citations</h1>
+            <HeaderPage title={"Liste des citations"} backLink={"/admin"}/>
             {displayedCitations.map((citation, index) => {
                 if (displayedCitations.length === index + 1) {
                     return (
                         <div ref={lastCitationElementRef} key={citation.id}>
-                            <p>{citation.texte} - {citation.auteur}</p>
-                            <button>Modifier</button>
-                            <button>Supprimer</button>
+                            <CitationItem index={index} citation={citation} onDelete={handleDeleteCitation}/>
                         </div>
                     );
                 } else {
                     return (
                         <div key={citation.id}>
-                            <p>{citation.texte} - {citation.auteur}</p>
-                            <button>Modifier</button>
-                            <button>Supprimer</button>
+                            <CitationItem index={index} citation={citation} onDelete={handleDeleteCitation}/>
                         </div>
                     );
                 }

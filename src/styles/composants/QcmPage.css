@@ -1,34 +1,19 @@
-.Punchline {
+.qcm_page {
     text-align: center;
     padding: 20px;
 }
 
-.Punchline .nav-button {
+.qcm_page .nav-button {
     margin-bottom: 10px;
-}
-
-.clue-button {
-    padding: 10px 20px;
-    font-size: 16px;
-    background-color: #333;
-    color: #fff;
-    border: none;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.clue-button:hover {
-    background-color: #555;
 }
 
 .game-over {
     margin-top: 20px;
 }
 
-.game-over p {
+.game-over {
     font-size: 24px;
-    font-weight: bold;
-    margin-bottom: 10px;
+    margin: 15px;
 }
 
 .game-over button {

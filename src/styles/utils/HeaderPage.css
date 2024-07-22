@@ -1,0 +1,31 @@
+.header-page {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    border-bottom: 1px solid #ddd;
+    text-align: center;
+}
+
+.back-link {
+    position: absolute;
+    left: 1rem;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    font-size: 1rem;
+}
+
+.arrow-left {
+    margin-right: 0.5rem;
+}
+
+.back-text {
+    font-size: 1rem;
+}
+
+.header-title {
+    font-size: 1.5rem;
+    color: #333;
+    margin: 0;
+}

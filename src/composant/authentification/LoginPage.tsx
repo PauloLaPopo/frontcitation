@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
 import '../../styles/composants/authentification/LoginPage.css';
 import Button from '../utils/Button';
+import RoutesTypes from "../../models/RoutesTypes";
 
 const LoginPage: React.FC = () => {
     const [email, setEmail] = useState('');
@@ -12,7 +13,7 @@ const LoginPage: React.FC = () => {
 
     useEffect(() => {
         if (token) {
-            navigate('/home');
+            navigate(RoutesTypes.HOME);
         }
     }, [token, navigate]);
 
@@ -20,7 +21,7 @@ const LoginPage: React.FC = () => {
     const handleLogin = async () => {
         try {
             await login(email, password);
-            navigate('/home');
+            navigate(RoutesTypes.HOME);
         } catch (error) {
             console.error('Login failed:', error);
         }
@@ -54,8 +55,8 @@ const LoginPage: React.FC = () => {
                     />
                 </div>
                 <div className="form-buttons">
-                    <Button title="Login" onClick={handleLogin} type="primary" />
-                    <Button title="Register ?" onClick={() => navigate('/register')} />
+                    <Button title="Login" onClick={handleLogin} />
+                    <Button title="Register ?" onClick={() => navigate(RoutesTypes.REGISTER)} type={'secondary'} />
                 </div>
             </form>
         </div>

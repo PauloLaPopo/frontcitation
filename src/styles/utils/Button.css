@@ -10,7 +10,7 @@
     margin: 0 0.5rem; /* Espacement entre les boutons si vous en avez plusieurs */
 }
 
-.primary {
+.button.primary {
     background: #333;
     color: white;
 }
@@ -21,7 +21,7 @@
     border: 2px solid #333;
 }
 
-.secondary {
+.button.secondary {
     background-color: white;
     color: #333;
     border: 2px solid #333;

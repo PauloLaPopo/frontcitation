@@ -1,0 +1,21 @@
+.admin-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.admin-buttons {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.admin-buttons a {
+    text-decoration: none;
+}
+
+.admin-buttons button {
+    width: 200px;
+}

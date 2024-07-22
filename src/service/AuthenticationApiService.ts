@@ -13,6 +13,7 @@ interface RegisterDto {
 
 interface AuthResponse {
     token: string;
+    role: string;
 }
 
 const API_URL = 'http://localhost:8080/api/auth';

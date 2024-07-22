@@ -1,15 +1,11 @@
-/* ModifierCitation.css */
-.modifier-citation {
+.add-punchline-container {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 20px;
 }
 
-.modifier-citation form {
-    display: flex;
-    flex-direction: column;
+.add-punchline-form {
     background: white;
     padding: 2rem;
     border-radius: 8px;
@@ -18,35 +14,35 @@
     max-width: 500px;
 }
 
-.modifier-citation .form-group {
+.add-punchline-form .form-group {
     margin-bottom: 1rem;
-    width: 100%;
 }
 
-.modifier-citation .form-group label {
+.add-punchline-form label {
     display: block;
     margin-bottom: 0.5rem;
     color: #333;
 }
 
-.modifier-citation .form-group input {
+.add-punchline-form input,
+.add-punchline-form textarea {
     width: 100%;
     padding: 0.5rem;
     border: 1px solid #ccc;
     border-radius: 4px;
 }
 
-.modifier-citation button[type="submit"] {
-    padding: 10px 20px;
-    font-size: 16px;
-    background-color: #333;
-    color: white;
+.add-punchline-form button[type="submit"] {
+    width: 100%;
+    padding: 0.75rem;
     border: none;
     border-radius: 4px;
+    color: white;
+    font-size: 1rem;
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
 
-.modifier-citation button[type="submit"]:hover {
-    background-color: #555;
+.add-punchline-form button[type="submit"]:hover {
+    background-color: #0056b3;
 }

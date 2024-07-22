@@ -1,0 +1,22 @@
+.list-punchlines-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+}
+
+.punchline-list {
+    width: 100%;
+    max-width: 1200px;
+}
+
+.punchline-list > div {
+    margin-bottom: 1rem;
+}
+
+/* Loader */
+.list-punchlines-container .loader {
+    margin: 2rem auto;
+    display: flex;
+    justify-content: center;
+}

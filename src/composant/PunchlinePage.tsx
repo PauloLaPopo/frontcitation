@@ -1,14 +1,17 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import punchlineApiService from "../service/PunchlineApiService";
 import { shuffle } from "../utils/Shuffle"; // Fonction utilitaire pour mélanger les options
 import Qcm from "./Qcm";
 import { Punchline } from "../models/Punchline";
 import { Link } from "react-router-dom"; // Composant QCM pour afficher la question et les options
-import '../styles/composants/Punchline.css'
+import '../styles/composants/QcmPage.css'
 import Loader from "./utils/Loader";
 import AnswerFeedback from "./utils/AnswerFeedback";
+import Button from "./utils/Button";
+import HeaderPage from "./utils/HeaderPage";
+import RoutesTypes from "../models/RoutesTypes";
 
-const Punchlines: React.FC = () => {
+const PunchlinePage: React.FC = () => {
     const [punchlines, setPunchlines] = useState<Punchline[]>([]);
     const [allAuthors, setAllAuthors] = useState<string[]>([]);
     const [currentPunchline, setCurrentPunchline] = useState<Punchline | null>(null);
@@ -19,8 +22,6 @@ const Punchlines: React.FC = () => {
     const [isPartieEnCours, setIsPartieEnCours] = useState<boolean>(true);
     const [isClueActivated, setIsClueActivated] = useState<boolean>(false);
     const [feedback, setFeedback] = useState<{ isCorrect: boolean } | null>(null); // État pour l'animation
-
-    const timeoutRef = useRef<number | null>(null);
 
     const fetchPunchlinesAndAuthors = async () => {
         const [allPunchlines, allAuthors] = await Promise.all([
@@ -38,17 +39,9 @@ const Punchlines: React.FC = () => {
         fetchPunchlinesAndAuthors();
     }, []);
 
-    const handleAnswer = (isGoodAnswer: boolean) => {
-        if (timeoutRef.current) {
-            clearTimeout(timeoutRef.current);
-            timeoutRef.current = null;
-        }
-
+    const handleAnswer = async (isGoodAnswer: boolean) => {
+        await setFeedback(null);
         setFeedback({ isCorrect: isGoodAnswer });
-
-        timeoutRef.current = window.setTimeout(() => {
-            setFeedback(null);
-        }, 2000);
 
         setIsClueActivated(false);
 
@@ -71,7 +64,6 @@ const Punchlines: React.FC = () => {
             setOptions(shuffle([...otherAuthors, nextPunchline.auteur]));
         } else {
             console.log('Fin du jeu !');
-            // Gérer la fin du jeu (par exemple, réinitialiser le jeu ou afficher un message)
         }
     };
 
@@ -82,10 +74,6 @@ const Punchlines: React.FC = () => {
         setNbVies(3);
         setNbBonneRep(0);
         setFeedback(null);
-        if (timeoutRef.current) {
-            clearTimeout(timeoutRef.current);
-            timeoutRef.current = null;
-        }
         await fetchPunchlinesAndAuthors(); // Recharge une nouvelle citation
     };
 
@@ -97,7 +85,7 @@ const Punchlines: React.FC = () => {
                 )
             } else {
                 return (
-                    <button className="clue-button" onClick={() => setIsClueActivated(true)}>Indice ?</button>
+                    <Button title={"Indice ?"} onClick={() => setIsClueActivated(true)} type={"secondary"} />
                 )
             }
         }
@@ -105,14 +93,8 @@ const Punchlines: React.FC = () => {
     }
 
     return (
-        <div className="Punchline">
-            <div className="header_page">
-                <Link to="/home" className="back-link">
-                    <span className="arrow-left">&#x2190;</span> {/* Flèche vers la gauche */}
-                    <span className="back-text">Retour</span>
-                </Link>
-                <h1 className="title">Qui a dit ça ?</h1>
-            </div>
+        <div className="qcm_page">
+            <HeaderPage title={"Qui a dit ça ?"} backLink={RoutesTypes.HOME} />
             {feedback && <AnswerFeedback isCorrect={feedback.isCorrect} onAnimationEnd={() => {}} />}
             {isPartieEnCours ? (
                 <>
@@ -137,11 +119,11 @@ const Punchlines: React.FC = () => {
             ) : (
                 <div className="game-over">
                     <p>Perdu !</p>
-                    <button onClick={reset}>Rejouer ?</button>
+                    <Button title="Rejouer ?" onClick={reset} />
                 </div>
             )}
         </div>
     );
 };
 
-export default Punchlines;
+export default PunchlinePage;
